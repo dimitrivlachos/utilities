@@ -3,8 +3,8 @@ import os
 import re
 from PIL import Image
 
-def generate_image_from_coordinates(file_path, width, height):
-    # Check if the file exists
+def generate_image_from_coordinates(file_path, output_path, width, height):
+    # Check if the input file exists
     if not os.path.isfile(file_path):
         print(f"File {file_path} does not exist.")
         return
@@ -38,16 +38,17 @@ def generate_image_from_coordinates(file_path, width, height):
                 print(f"Warning: Could not parse line: {line.strip()}")
     
     # Save the image as PNG
-    output_path = os.path.splitext(file_path)[0] + "_output.png"
-    image.save(output_path)
-    print(f"Image saved as {output_path}")
+    output_file_path = output_path + ".png"
+    image.save(output_file_path)
+    print(f"Image saved as {output_file_path}")
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        print("Usage: python script.py <path_to_txt_file> <width> <height>")
+    if len(sys.argv) != 5:
+        print("Usage: python script.py <path_to_txt_file> <output_path> <width> <height>")
     else:
         txt_file_path = sys.argv[1]
-        img_width = int(sys.argv[2])
-        img_height = int(sys.argv[3])
+        output_file_path = sys.argv[2]
+        img_width = int(sys.argv[3])
+        img_height = int(sys.argv[4])
 
-        generate_image_from_coordinates(txt_file_path, img_width, img_height)
+        generate_image_from_coordinates(txt_file_path, output_file_path, img_width, img_height)
