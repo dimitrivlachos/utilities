@@ -40,8 +40,9 @@ def generate_grayscale_image(file_path, output_path, width, height):
                 print(f"Warning: Could not parse line: {line.strip()}")
     
     # Save the image as PNG
-    image.save(output_path)
-    print(f"Image saved as {output_path}")
+    output_file_path = output_path + ".png"
+    image.save(output_file_path)
+    print(f"Image saved as {output_file_path}")
 
 if __name__ == "__main__":
     if len(sys.argv) != 5:
