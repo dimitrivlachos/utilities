@@ -1,4 +1,6 @@
 /output
+*.png
+*.txt
 
 # # # # # # # # # # # # # # # # # #
 # Standard python .gitignore file
