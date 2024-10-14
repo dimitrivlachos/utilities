@@ -19,20 +19,13 @@ def compare_files(file1, file2):
     
     differences = []
     comparison_count = 0
-    none_in_file1 = 0
-    none_in_file2 = 0
 
     for coord in all_coords:
         val1 = data1.get(coord, None)
         val2 = data2.get(coord, None)
         comparison_count += 1
-        if val1 is None:
-            none_in_file1 += 1
-        if val2 is None:
-            none_in_file2 += 1
         if val1 != val2:
-            if val1 is not None and val2 is not None:
-                differences.append((coord, val1, val2))
+            differences.append((coord, val1, val2))
     
     return differences, comparison_count, none_in_file1, none_in_file2
 
@@ -51,8 +44,6 @@ if __name__ == "__main__":
         for coord, val1, val2 in differences:
             print(f"Coordinate {coord}: File1 value = {val1}, File2 value = {val2}")
     else:
-        print(f"No differences found. Total comparisons made: {comparison_count}")
+        print(f"No differences found.")
 
     print(f"Total comparisons made: {comparison_count}")
-    print(f"Number of 'None' values in File 1: {none_in_file1}")
-    print(f"Number of 'None' values in File 2: {none_in_file2}")
